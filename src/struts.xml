@@ -3,6 +3,7 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
+<!-- 注意：struts里面配置了action，但没有具体的action类的时候tomcat是启动不了的 -->
 <struts>
 	<!-- struts的常量,会覆盖default.properties中的常量值 -->
 	<!--开发模式,debug不需要重启服务器  -->
