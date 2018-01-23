@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- struts的常量,会覆盖default.properties中的常量值 -->
+	<!--开发模式,debug不需要重启服务器  -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!--解决中文乱码   编码 internationalization-->
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<!-- action的访问扩展名 -->
+	<constant name="struts.action.extension" value="action,do,html,,"></constant>
+	<!-- 开启动态方法访问 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	
+	
+	<package name="default" namespace="/" extends="struts-default">
+
+		<!-- 注意这里的name后面不需要加.action之类的后缀 ，因为后缀可以由上面struts的常量来统一配置-->
+		<action name="index" class="action.indexStruts">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="index2" class="action.indexStruts" method="test2">
+			<result name="test2">/test2.jsp</result>
+		</action>
+		
+		<!-- 普通java类的，内部属性提供get/set方法 -->
+		<action name="login" class="action.login">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<!-- 继承ActionSupport类，属性以pojo实体对象，提供对象的set/get方法-->
+		<action name="login2" class="action.login2">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<!-- 继承ActionSupport类或实现Action接口，实现ModelDriven接口，属性以pojo实体对象，重写getModel()方法，不需要提供set/get方法-->
+		<!-- 该方式对象需要手动new一个 -->
+		<action name="login3" class="action.login3">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+</struts>
